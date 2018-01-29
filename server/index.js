@@ -1,7 +1,13 @@
 const express = require('express'); // node does not have support for ES6
+const mongoose = require('mongoose');
+const keys = require('./config/keys');
+require('./models/Word');
+
 const app = express();
 // inside a singe node.js project, there can be many express applications running
 // calling express like a function creates a new app
+
+mongoose.connect(keys.mongoURI);
 
 app.get('/', (request, response) => {
   // watch for incoming requests (get, post, put, delete, patch) trying to access '/'
